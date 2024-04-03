@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#SBATCH --job-name=test		      # Job name
+###SBATCH --ntasks=4              # Run on 4 CPU
+##SBATCH --mem=12gb               # Job memory request
+#SBATCH --time=100:00:00          # Time limit hrs:min:sec
+#SBATCH --gres=gpu:2		      # Run on 2 GPUs
+#SBATCH --partition=worknn
+
+# ================ Activate Python venv ================
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+pyenv activate torch_nn
+# ======================================================
+
+CUDA_VISIBLE_DEVICES=0,1
+./run.sh --stage 1 --tag train_56_valid_28_causal_sr_16_neg_sisdr_L_16 --id 0,1

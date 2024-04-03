@@ -1,0 +1,35 @@
+# Data config
+data:
+  train_path: edingburgh_meta/edingburgh_valid_meta.csv
+  valid_path: edingburgh_meta/edingburgh_test_meta.csv
+  target_sr:  16000
+  segment:    3
+# filterbank config (Encoder and Decoder part)
+filterbank:
+  n_filters:   512          # N: Number of filters
+  kernel_size: 32           # L: Length of filters, 1 ms window size is (sampling rate / 1000)
+  stride:      8            # Stride of the kernel, i.e. how many overlap parts between windows
+# Network config (Separation part)
+masknet:
+  conv_kernel_size: 3       # P: Kernel size in conv blocks
+  n_blocks:  8              # X: Number of conv blocks in each repeat
+  n_repeats: 3              # R: Number of repeats
+  mask_act:  relu
+  bn_chan:   128            # B: Bottleneck channels
+  skip_chan: 128            # Sc: Number of channels in skip-connection paths’ 1 × 1-conv blocks
+  hid_chan:  512            # H: Number of channels in convolutional blocks
+  causal:    True           # Causal or not
+  n_src:     1
+# Training config
+training:
+  epochs:      200
+  batch_size:  4
+  num_workers: 4
+  half_lr:     true
+  early_stop:  true
+# Optim config
+optim:
+  optimizer: adam
+  lr:        0.001
+  weight_decay: 0.
+
