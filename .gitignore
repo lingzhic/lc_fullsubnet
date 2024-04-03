@@ -133,9 +133,7 @@ dmypy.json
 .pyre/
 
 
-./recipes/
-# edingburgh_lc_pretrained/
-# ./recipes/edingburgh_lc/
-./recipes/edingburgh_lc/ConvTasNet/exp/
-./recipes/edingburgh_lc/ConvTasNet/logs/
-./recipes/edingburgh_lc/ConvTasNet/slurm*
+recipes/edingburgh_lc_pretrained/
+recipes/edingburgh_lc/ConvTasNet/exp/
+recipes/edingburgh_lc/ConvTasNet/logs/
+recipes/edingburgh_lc/ConvTasNet/slurm*
